@@ -13,6 +13,7 @@ Mẫu thiết kế backend với MySQL của TAAgnes.
 
 - ✅ **Cơ sở dữ liệu MySQL**: Sequelize ORM với MySQL
 - ✅ **Xác thực và Phân quyền**: JWT với access/refresh tokens, phân quyền theo vai trò
+- ✅ **OAuth Integration**: Đăng nhập bằng Google, Facebook, GitHub (Passport.js)
 - ✅ **Xác thực Request**: Joi validation với các validator tùy chỉnh
 - ✅ **Xử lý Lỗi**: Xử lý lỗi tập trung với logging đầy đủ
 - ✅ **Ghi Log**: Winston với xoay vòng file và structured logging
@@ -106,6 +107,8 @@ TAAgnes-Backend/
 ├── docs/                 # Tài liệu hướng dẫn
 │   ├── KIEN-TRUC.md      # Tài liệu kiến trúc và cấu trúc
 │   ├── TAI-LIEU-API.md   # Tài liệu API
+│   ├── HUONG-DAN-OAUTH.md # Hướng dẫn OAuth (Google, Facebook, GitHub)
+│   ├── HUONG-DAN-CAC-FOLDER.md # Hướng dẫn các folder (bin, scripts, logs, tests)
 │   ├── NHAT-KY-THAY-DOI.md # Nhật ký thay đổi
 │   └── HUONG-DAN-DONG-GOP.md # Hướng dẫn đóng góp
 ├── .env.example          # Mẫu biến môi trường
@@ -153,6 +156,8 @@ Thư mục `logs/` được sử dụng để lưu trữ các file log của ứ
 - `DELETE /v1/users/:userId` - Xóa người dùng (chỉ admin)
 
 Xem [TAI-LIEU-API.md](./docs/TAI-LIEU-API.md) để biết chi tiết về request/response format.
+
+Xem [HUONG-DAN-OAUTH.md](./docs/HUONG-DAN-OAUTH.md) để biết cách cấu hình và sử dụng OAuth (Google, Facebook, GitHub).
 
 ## Cấu hình
 

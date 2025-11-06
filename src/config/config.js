@@ -26,6 +26,22 @@ try {
         origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
       },
       logLevel: process.env.LOG_LEVEL || 'info',
+      // OAuth Config
+      google: {
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:3000/v1/auth/google/callback',
+      },
+      facebook: {
+        appId: process.env.FACEBOOK_APP_ID,
+        appSecret: process.env.FACEBOOK_APP_SECRET,
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL || 'http://localhost:3000/v1/auth/facebook/callback',
+      },
+      github: {
+        clientId: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3000/v1/auth/github/callback',
+      },
     };
   } else {
     throw error;

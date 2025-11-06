@@ -5,12 +5,7 @@ const { User } = require('../src/models');
 describe('User API', () => {
   beforeEach(async () => {
     // Clean up database before each test
-    const config = require('../src/config/config');
-    if (config.dbType === 'mongodb') {
-      await User.deleteMany({});
-    } else {
-      await User.destroy({ where: {}, truncate: true });
-    }
+    await User.destroy({ where: {}, truncate: true });
   });
 
   describe('POST /v1/users', () => {

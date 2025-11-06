@@ -59,12 +59,41 @@ Hướng dẫn cho những người muốn đóng góp vào dự án:
 
 ---
 
+### 🔐 [HUONG-DAN-OAUTH.md](./HUONG-DAN-OAUTH.md)
+**Hướng dẫn OAuth - Đăng nhập bằng Google, Facebook, GitHub**
+
+Hướng dẫn chi tiết về:
+- Cách cấu hình OAuth với Google, Facebook, GitHub
+- Luồng hoạt động của OAuth
+- Tích hợp OAuth vào frontend
+- Bảo mật và best practices
+- Troubleshooting
+
+**Khi nào đọc**: Khi bạn muốn thêm tính năng đăng nhập bằng OAuth vào ứng dụng.
+
+---
+
+### 📁 [HUONG-DAN-CAC-FOLDER.md](./HUONG-DAN-CAC-FOLDER.md)
+**Hướng dẫn Các Folder: bin, scripts, logs, tests**
+
+Hướng dẫn chi tiết về:
+- Tác dụng của từng folder (bin, scripts, logs, tests)
+- Cách viết code trong mỗi folder
+- Ví dụ cụ thể cho từng loại file
+- Best practices và checklist
+
+**Khi nào đọc**: Khi bạn muốn hiểu rõ cách tổ chức và sử dụng các folder đặc biệt trong dự án.
+
+---
+
 ## Cách sử dụng
 
 1. **Bắt đầu với dự án**: Đọc [KIEN-TRUC.md](./KIEN-TRUC.md) để hiểu cấu trúc
 2. **Sử dụng API**: Đọc [TAI-LIEU-API.md](./TAI-LIEU-API.md) để biết cách gọi API
-3. **Đóng góp**: Đọc [HUONG-DAN-DONG-GOP.md](./HUONG-DAN-DONG-GOP.md) để biết quy trình
-4. **Theo dõi thay đổi**: Xem [NHAT-KY-THAY-DOI.md](./NHAT-KY-THAY-DOI.md) để biết các cập nhật
+3. **Thêm OAuth**: Đọc [HUONG-DAN-OAUTH.md](./HUONG-DAN-OAUTH.md) để cấu hình đăng nhập OAuth
+4. **Hiểu các folder**: Đọc [HUONG-DAN-CAC-FOLDER.md](./HUONG-DAN-CAC-FOLDER.md) để biết cách sử dụng bin, scripts, logs, tests
+5. **Đóng góp**: Đọc [HUONG-DAN-DONG-GOP.md](./HUONG-DAN-DONG-GOP.md) để biết quy trình
+6. **Theo dõi thay đổi**: Xem [NHAT-KY-THAY-DOI.md](./NHAT-KY-THAY-DOI.md) để biết các cập nhật
 
 ---
 

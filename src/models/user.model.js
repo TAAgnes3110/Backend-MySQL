@@ -24,10 +24,22 @@ module.exports = (sequelize) => {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true, // Cho phép null cho OAuth users
         validate: {
           len: [8, 255],
         },
+      },
+      provider: {
+        type: DataTypes.ENUM('local', 'google', 'facebook', 'github'),
+        defaultValue: 'local',
+      },
+      providerId: {
+        type: DataTypes.STRING,
+        allowNull: true, // ID từ OAuth provider
+      },
+      avatar: {
+        type: DataTypes.STRING,
+        allowNull: true, // URL avatar từ OAuth provider
       },
       role: {
         type: DataTypes.ENUM('user', 'admin'),
@@ -44,12 +56,14 @@ module.exports = (sequelize) => {
       underscored: true,
       hooks: {
         beforeCreate: async (user) => {
-          if (user.password) {
+          // Chỉ hash password nếu có password và provider là local
+          if (user.password && user.provider === 'local') {
             user.password = await bcrypt.hash(user.password, 8);
           }
         },
         beforeUpdate: async (user) => {
-          if (user.changed('password')) {
+          // Chỉ hash password nếu password thay đổi và provider là local
+          if (user.changed('password') && user.provider === 'local') {
             user.password = await bcrypt.hash(user.password, 8);
           }
         },

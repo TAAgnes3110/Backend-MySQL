@@ -5,11 +5,13 @@ const xss = require('xss-clean');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
 const morgan = require('morgan');
+const session = require('express-session');
 const httpStatus = require('http-status');
 const config = require('./config/config');
 const logger = require('./config/logger');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const requestId = require('./middlewares/requestId');
+const passport = require('./config/passport');
 const routes = require('./routes/v1');
 const { getConnection } = require('./config/database');
 
@@ -26,6 +28,24 @@ app.use(express.json({ limit: '10mb' }));
 
 // Parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
+
+// Session for OAuth (optional, có thể dùng stateless)
+app.use(
+  session({
+    secret: config.jwt.secret,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: config.env === 'production',
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    },
+  })
+);
+
+// Initialize Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Sanitize request data
 app.use(xss());

@@ -14,6 +14,18 @@ const envVarsSchema = Joi.object()
     JWT_REFRESH_EXPIRATION_DAYS: Joi.number().default(30),
     CORS_ORIGIN: Joi.string().default('http://localhost:3000'),
     LOG_LEVEL: Joi.string().valid('error', 'warn', 'info', 'http', 'verbose', 'debug', 'silly').default('info'),
+    // OAuth Google
+    GOOGLE_CLIENT_ID: Joi.string().optional(),
+    GOOGLE_CLIENT_SECRET: Joi.string().optional(),
+    GOOGLE_CALLBACK_URL: Joi.string().optional(),
+    // OAuth Facebook
+    FACEBOOK_APP_ID: Joi.string().optional(),
+    FACEBOOK_APP_SECRET: Joi.string().optional(),
+    FACEBOOK_CALLBACK_URL: Joi.string().optional(),
+    // OAuth GitHub
+    GITHUB_CLIENT_ID: Joi.string().optional(),
+    GITHUB_CLIENT_SECRET: Joi.string().optional(),
+    GITHUB_CALLBACK_URL: Joi.string().optional(),
   })
   .unknown();
 
@@ -42,5 +54,20 @@ module.exports = {
     origin: envVars.CORS_ORIGIN,
   },
   logLevel: envVars.LOG_LEVEL,
+  google: {
+    clientId: envVars.GOOGLE_CLIENT_ID,
+    clientSecret: envVars.GOOGLE_CLIENT_SECRET,
+    callbackURL: envVars.GOOGLE_CALLBACK_URL || 'http://localhost:3000/v1/auth/google/callback',
+  },
+  facebook: {
+    appId: envVars.FACEBOOK_APP_ID,
+    appSecret: envVars.FACEBOOK_APP_SECRET,
+    callbackURL: envVars.FACEBOOK_CALLBACK_URL || 'http://localhost:3000/v1/auth/facebook/callback',
+  },
+  github: {
+    clientId: envVars.GITHUB_CLIENT_ID,
+    clientSecret: envVars.GITHUB_CLIENT_SECRET,
+    callbackURL: envVars.GITHUB_CALLBACK_URL || 'http://localhost:3000/v1/auth/github/callback',
+  },
 };
 

@@ -10,6 +10,10 @@ const createUser = async (userBody) => {
   if (await User.isEmailTaken(userBody.email)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
+  // Nếu là OAuth user, không cần password
+  if (userBody.provider && userBody.provider !== 'local' && !userBody.password) {
+    userBody.password = null;
+  }
   const user = await User.create(userBody);
   return user;
 };
