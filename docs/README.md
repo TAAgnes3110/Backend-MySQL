@@ -86,14 +86,29 @@ Hướng dẫn chi tiết về:
 
 ---
 
+### 🔐 [HUONG-DAN-ADMIN.md](./HUONG-DAN-ADMIN.md)
+**Hướng dẫn Viết Code Admin - Phân quyền**
+
+Hướng dẫn chi tiết về:
+- Code admin viết ở đâu (roles, middleware, routes, controllers, services)
+- Cách định nghĩa roles và quyền
+- Cách sử dụng middleware `authenticate` và `authorize`
+- Ví dụ hoàn chỉnh tạo feature admin mới
+- Best practices và checklist
+
+**Khi nào đọc**: Khi bạn muốn thêm tính năng phân quyền hoặc tạo các chức năng chỉ dành cho admin.
+
+---
+
 ## Cách sử dụng
 
 1. **Bắt đầu với dự án**: Đọc [KIEN-TRUC.md](./KIEN-TRUC.md) để hiểu cấu trúc
 2. **Sử dụng API**: Đọc [TAI-LIEU-API.md](./TAI-LIEU-API.md) để biết cách gọi API
 3. **Thêm OAuth**: Đọc [HUONG-DAN-OAUTH.md](./HUONG-DAN-OAUTH.md) để cấu hình đăng nhập OAuth
 4. **Hiểu các folder**: Đọc [HUONG-DAN-CAC-FOLDER.md](./HUONG-DAN-CAC-FOLDER.md) để biết cách sử dụng bin, scripts, logs, tests
-5. **Đóng góp**: Đọc [HUONG-DAN-DONG-GOP.md](./HUONG-DAN-DONG-GOP.md) để biết quy trình
-6. **Theo dõi thay đổi**: Xem [NHAT-KY-THAY-DOI.md](./NHAT-KY-THAY-DOI.md) để biết các cập nhật
+5. **Viết code admin**: Đọc [HUONG-DAN-ADMIN.md](./HUONG-DAN-ADMIN.md) để biết cách viết code phân quyền
+6. **Đóng góp**: Đọc [HUONG-DAN-DONG-GOP.md](./HUONG-DAN-DONG-GOP.md) để biết quy trình
+7. **Theo dõi thay đổi**: Xem [NHAT-KY-THAY-DOI.md](./NHAT-KY-THAY-DOI.md) để biết các cập nhật
 
 ---
 

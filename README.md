@@ -109,6 +109,7 @@ TAAgnes-Backend/
 │   ├── TAI-LIEU-API.md   # Tài liệu API
 │   ├── HUONG-DAN-OAUTH.md # Hướng dẫn OAuth (Google, Facebook, GitHub)
 │   ├── HUONG-DAN-CAC-FOLDER.md # Hướng dẫn các folder (bin, scripts, logs, tests)
+│   ├── HUONG-DAN-ADMIN.md # Hướng dẫn viết code admin (phân quyền)
 │   ├── NHAT-KY-THAY-DOI.md # Nhật ký thay đổi
 │   └── HUONG-DAN-DONG-GOP.md # Hướng dẫn đóng góp
 ├── .env.example          # Mẫu biến môi trường
