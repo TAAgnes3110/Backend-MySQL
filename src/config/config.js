@@ -42,6 +42,9 @@ try {
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
         callbackURL: process.env.GITHUB_CALLBACK_URL || 'http://localhost:3000/v1/auth/github/callback',
       },
+      session: {
+        secret: process.env.SESSION_SECRET || process.env.JWT_SECRET || 'your-session-secret',
+      },
     };
   } else {
     throw error;

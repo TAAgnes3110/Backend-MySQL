@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 // Session for OAuth (optional, có thể dùng stateless)
 app.use(
   session({
-    secret: config.jwt.secret,
+    secret: config.session.secret,
     resave: false,
     saveUninitialized: false,
     cookie: {

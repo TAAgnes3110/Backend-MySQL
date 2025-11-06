@@ -26,6 +26,22 @@ const envVarsSchema = Joi.object()
     GITHUB_CLIENT_ID: Joi.string().optional(),
     GITHUB_CLIENT_SECRET: Joi.string().optional(),
     GITHUB_CALLBACK_URL: Joi.string().optional(),
+    // Session
+    SESSION_SECRET: Joi.string().optional(),
+    // Email - SMTP
+    SMTP_HOST: Joi.string().optional(),
+    SMTP_PORT: Joi.number().optional(),
+    SMTP_SECURE: Joi.boolean().optional(),
+    SMTP_USER: Joi.string().optional(),
+    SMTP_PASS: Joi.string().optional(),
+    SMTP_FROM: Joi.string().optional(),
+    // Email - API
+    RESEND_API_KEY: Joi.string().optional(),
+    RESEND_FROM_EMAIL: Joi.string().optional(),
+    SENDGRID_API_KEY: Joi.string().optional(),
+    SENDGRID_FROM_EMAIL: Joi.string().optional(),
+    // Frontend URL
+    FRONTEND_URL: Joi.string().optional(),
   })
   .unknown();
 
@@ -68,6 +84,9 @@ module.exports = {
     clientId: envVars.GITHUB_CLIENT_ID,
     clientSecret: envVars.GITHUB_CLIENT_SECRET,
     callbackURL: envVars.GITHUB_CALLBACK_URL || 'http://localhost:3000/v1/auth/github/callback',
+  },
+  session: {
+    secret: envVars.SESSION_SECRET || envVars.JWT_SECRET || 'your-session-secret',
   },
 };
 

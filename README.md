@@ -110,6 +110,8 @@ TAAgnes-Backend/
 │   ├── HUONG-DAN-OAUTH.md # Hướng dẫn OAuth (Google, Facebook, GitHub)
 │   ├── HUONG-DAN-CAC-FOLDER.md # Hướng dẫn các folder (bin, scripts, logs, tests)
 │   ├── HUONG-DAN-ADMIN.md # Hướng dẫn viết code admin (phân quyền)
+│   ├── HUONG-DAN-DEPLOY-FREE.md # Hướng dẫn deploy FREE 100% (Fly.io, Koyeb)
+│   ├── HUONG-DAN-DEPLOY-RAILWAY.md # Hướng dẫn deploy lên Railway ($5/tháng)
 │   ├── NHAT-KY-THAY-DOI.md # Nhật ký thay đổi
 │   └── HUONG-DAN-DONG-GOP.md # Hướng dẫn đóng góp
 ├── .env.example          # Mẫu biến môi trường
@@ -136,7 +138,7 @@ Thư mục `logs/` được sử dụng để lưu trữ các file log của ứ
 - Các file log được ghi tự động bởi Winston logger (đã cấu hình sẵn)
 - File log có thể phát triển lớn theo thời gian, nên cần xoay vòng log (log rotation) trong production
 - Thư mục `logs/` đã được thêm vào `.gitignore` để không commit vào git
-- **Trên server free**: Nhiều platform (Render, Railway) tự quản lý logs, bạn có thể xem logs qua dashboard của platform thay vì file local
+- **Trên server free**: Nhiều platform (Railway, Fly.io) tự quản lý logs, bạn có thể xem logs qua dashboard của platform thay vì file local
 - **Đã đủ cho development**: Cấu hình hiện tại đủ dùng cho phát triển và test. Để production, có thể thêm `winston-daily-rotate-file` cho log rotation
 
 ## API Endpoints
@@ -228,51 +230,39 @@ npm run format
 
 ### Triển khai lên Server Miễn phí
 
-Dự án này có thể được triển khai lên các nền tảng miễn phí sau:
+### ⚠️ Lưu Ý Quan Trọng Về Free Tier
 
-#### 1. Render.com (Khuyến nghị)
+**Railway KHÔNG còn free 100%:**
+- Gói Hobby: **$5/tháng** (có $5 credit nhưng vẫn tính phí)
+- Hobby tier **KHÔNG hỗ trợ SMTP** (chỉ Pro $20/tháng mới có)
+- Phải dùng Email API (Resend/SendGrid) thay vì SMTP
 
-1. Đăng ký tài khoản tại [Render.com](https://render.com)
-2. Tạo Web Service mới
-3. Kết nối repository GitHub của bạn
-4. Cấu hình:
-   - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
-   - **Environment**: `Node`
-5. Thêm các biến môi trường từ `.env`
-6. Tạo MySQL database trên Render (có gói free)
-7. Cập nhật `MYSQL_HOST`, `MYSQL_DB`, `MYSQL_USER`, `MYSQL_PASSWORD` trong Environment Variables
+**Render KHÔNG hỗ trợ SMTP:**
+- Free tier chặn cổng SMTP (25, 465, 587)
 
-#### 2. Railway.app
+### 🎯 Các Lựa Chọn Deploy
 
-1. Đăng ký tại [Railway.app](https://railway.app)
-2. Tạo project mới từ GitHub repository
-3. Thêm MySQL service
-4. Cấu hình biến môi trường
-5. Deploy tự động
+#### 1. Fly.io (FREE 100%) ⭐ Khuyến Nghị
 
-#### 3. Fly.io
+- ✅ **Hoàn toàn FREE 100%**
+- ✅ Hỗ trợ MySQL (dùng PlanetScale free tier)
+- ✅ Có thể dùng Email API (Resend/SendGrid free)
+- ✅ Custom domain miễn phí
 
-1. Cài đặt Fly CLI: `npm install -g @fly/cli`
-2. Đăng nhập: `fly auth login`
-3. Khởi tạo: `fly launch`
-4. Deploy: `fly deploy`
+Xem hướng dẫn: [HUONG-DAN-DEPLOY-FREE.md](./docs/HUONG-DAN-DEPLOY-FREE.md)
 
-#### 4. Vercel (Chỉ cho Serverless)
+#### 2. Railway ($5/tháng)
 
-**Lưu ý**: Vercel phù hợp hơn cho serverless, cần điều chỉnh code.
+- 💰 Gói Hobby: $5/tháng
+- ✅ Hỗ trợ MySQL
+- ❌ Không hỗ trợ SMTP (phải dùng Email API)
+- ✅ Auto deploy từ GitHub
 
-#### 5. Heroku (Có gói free hạn chế)
-
-1. Cài đặt Heroku CLI
-2. Đăng nhập: `heroku login`
-3. Tạo app: `heroku create taagnes-backend`
-4. Thêm MySQL addon: `heroku addons:create cleardb:ignite`
-5. Deploy: `git push heroku main`
+Xem hướng dẫn: [HUONG-DAN-DEPLOY-RAILWAY.md](./docs/HUONG-DAN-DEPLOY-RAILWAY.md)
 
 ### Lưu ý khi Deploy
 
-1. **Database**: Sử dụng MySQL cloud service (Render, PlanetScale, Aiven, hoặc Railway)
+1. **Database**: Sử dụng MySQL cloud service (Railway, PlanetScale, Aiven)
 2. **Environment Variables**: Đảm bảo cấu hình đầy đủ trong dashboard của platform
 3. **Port**: Nhiều platform tự động set PORT, cần đọc từ `process.env.PORT`
 4. **Logs**: Trên server free, logs thường được quản lý bởi platform, không cần thư mục `logs/` local
